@@ -1,25 +1,30 @@
-package main
-
+package main //
 import "fmt"
 
-type deck []string
+type deck []string // creating a deck class with a string type
 
-func newDeck() deck {
-	cards := deck{}
+func newDeck() deck { // newDeck method that returns a deck string type
+	cards := deck{}                                        // create an empty so save the concatinations to
+	cardSuits := []string{"Spades", "Diamonds", "Hearts"}  //create the suits iterations
+	cardValues := []string{"aces", "Two", "Three", "Four"} //create the values iterations
 
-	cardSuits := []string{"Spades", "Diamonds", "Hearts"}
-	cardValues := []string{"aces", "Two", "Three", "Four"}
+	for _, suit := range cardSuits { // for loop to go through car  suits
 
-	for _, suit := range cardSuits {
-		for _, value := range cardValues {
-			cards = append(cards, value+" of  "+suit)
+		for _, value := range cardValues { // second loop to go through the values
+			cards = append(cards, value+" of  "+suit) // appends to cards
 		}
 	}
-	return cards
+	return cards // return the cards
 }
 
-func (d deck) print() {
-	for i, card := range d {
-		fmt.Println(i, card)
+func (d deck) print() { //print loop
+
+	for i, card := range d { // iterates through the card variable
+		fmt.Println(i, card) // print the cards in the loop
 	}
+}
+
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
+
 }
